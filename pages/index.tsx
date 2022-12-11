@@ -11,9 +11,21 @@ const Home: NextPage = () => {
       </Head>
 
       Lets build Nextflix!
+      {/* Header */}
+      
       <main>
-
+        {/* Banner */}
+        <section>
+          {/* row */}
+          {/* row */}
+          {/* row */}
+          {/* row */}
+          {/* row */}
+          {/* row */}
+          {/* row */}
+        </section>
       </main>
+      {/* Modal */}
     </div>
   )
 }
