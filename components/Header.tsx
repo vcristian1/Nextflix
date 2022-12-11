@@ -1,3 +1,5 @@
+import { SearchIcon } from '@heroicons/react/solid'
+
 function Header() {
   return (
     <header>
@@ -18,7 +20,9 @@ function Header() {
             </ul>
         </div>
 
-        <div></div>
+        <div>
+            <SearchIcon className='hidden sm:inline'/>
+        </div>
     </header>
   )
 }
