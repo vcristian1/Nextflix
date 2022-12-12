@@ -21,7 +21,6 @@ function Header() {
         }
     },[])
 
-
   return (
     //bg color changes based on isScrolled above
     <header className={`${isScrolled && 'bg-[#141414]'}`}>
