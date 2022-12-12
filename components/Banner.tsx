@@ -1,8 +1,11 @@
-import React from 'react'
-
 function Banner() {
   return (
-    <div>Banner</div>
+    <div>
+        <div>
+            {/* //Next.js component */}
+            
+        </div>
+    </div>
   )
 }
 
