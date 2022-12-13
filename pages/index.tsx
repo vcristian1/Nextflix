@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
 import requests from '../utils/requests'
+import Row from '../components/Row'
 // import Movie from '../typings'
 
 interface Props {
@@ -37,13 +38,14 @@ const Home = ({
         {/* Extremely important to pass in netflixOriginals below or an err will occur */}
         <Banner netflixOriginals={netflixOriginals}/>
           <section>
-          {/* row */}
-          {/* row */}
-          {/* row */}
-          {/* row */}
-          {/* row */}
-          {/* row */}
-          {/* row */}
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
         </section>
       </main>
       {/* Modal */}
