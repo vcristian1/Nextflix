@@ -37,7 +37,7 @@ function Banner({ netflixOriginals }: Props) {
             </p>
 
             <div>
-                <button className="bannerButton"><FaPlay className="h-4 w-4 text-black md:h-7 w-7"/>Play</button>
+                <button className="bannerButton bg-white text-black"><FaPlay className="h-4 w-4 text-black md:h-7 w-7"/>Play</button>
                 <button className="bannerButton">More Info</button>
             </div>
 
