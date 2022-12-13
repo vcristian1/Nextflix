@@ -1,3 +1,5 @@
+import { ChevronLeftIcon } from "@heroicons/react/solid"
+import { ChevronRightIcon } from "@heroicons/react/solid"
 import { Movie } from "../typings"
 
 interface Props {
@@ -7,7 +9,15 @@ interface Props {
 
 function Row({title, movies}: Props) {
   return (
-    <div>Row</div>
+    <div>
+      <h2>{title}</h2>
+
+      {/* Left and Right Scroll Icons */}
+      <div>
+        <ChevronLeftIcon />
+        <ChevronRightIcon />
+      </div>
+    </div>
   )
 }
 
