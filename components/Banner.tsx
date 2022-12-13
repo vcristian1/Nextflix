@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Movie } from '../typings';
 import { useEffect, useState} from 'react'
 import { baseUrl } from '../constants/movie'
+import { FaPlay } from 'react-icons/fa';
 
 interface Props {
     netflixOriginals: Movie[]
@@ -36,7 +37,7 @@ function Banner({ netflixOriginals }: Props) {
             </p>
 
             <div>
-                <button className="bannerButton">Play</button>
+                <button className="bannerButton"><FaPlay />Play</button>
                 <button className="bannerButton">More Info</button>
             </div>
 

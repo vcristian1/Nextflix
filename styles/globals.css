@@ -17,6 +17,6 @@
         hover:text-[#b3b3b3];
     }
     .bannerButton {
-        @apply flex items-center gap-x-2
+        @apply flex items-center gap-x-2;
     }
 } 
