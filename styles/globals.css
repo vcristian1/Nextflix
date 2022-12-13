@@ -16,4 +16,7 @@
         @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-[.5s]
         hover:text-[#b3b3b3];
     }
+    .bannerButton {
+        @apply flex items-center gap-x-2
+    }
 } 
