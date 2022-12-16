@@ -1,35 +1,31 @@
-import { ChevronLeftIcon } from "@heroicons/react/solid"
-import { ChevronRightIcon } from "@heroicons/react/solid"
-import { Movie } from "../typings"
-import  Thumbnail  from "../components/Thumbnail"
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
+// import { DocumentData } from 'firebase/firestore'
 import { useRef, useState } from 'react'
-
+import { Movie } from '../typings'
+import Thumbnail from './Thumbnail'
 
 interface Props {
-    //DocumentData is needed for Firebase
-    title: string
-    films: Movie[]
+  title: string
+  movies: Movie[] 
 }
 
-function Row({ title, films }: Props) {
+function Row({ title, movies }: Props) {
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
 
   const handleClick = (direction: string) => {
     setIsMoved(true)
+    if (rowRef.current) {
+      const { scrollLeft, clientWidth } = rowRef.current
 
-    if(rowRef.current) {
-    const {scrollLeft, clientWidth} = rowRef.current
-
-    //Function that handles scroll, if direction is equal to string left it will subtract clientWidth
-    const scrollTo = 
-      direction === "left"
-        ? scrollLeft - clientWidth
-        : scrollLeft + clientWidth
-
-        rowRef.current.scrollTo({left: scrollTo, behavior: "smooth"})
+      const scrollTo =
+        direction === 'left'
+          ? scrollLeft - clientWidth
+          : scrollLeft + clientWidth
+      rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
     }
   }
+
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
       <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
@@ -46,7 +42,7 @@ function Row({ title, films }: Props) {
           className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
           ref={rowRef}
         >
-          {films.map((movie) => (
+          {movies.map((movie) => (
             <Thumbnail key={movie.id} movie={movie} />
           ))}
         </div>
