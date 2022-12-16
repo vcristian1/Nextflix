@@ -8,10 +8,10 @@ import { useRef, useState } from 'react'
 interface Props {
     //DocumentData is needed for Firebase
     title: string
-    movies: Movie[]
+    films: Movie[]
 }
 
-function Row({title, movies}: Props) {
+function Row({ title, films }: Props) {
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
 
@@ -46,7 +46,7 @@ function Row({title, movies}: Props) {
           className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
           ref={rowRef}
         >
-          {movies.map((movie) => (
+          {films.map((movie) => (
             <Thumbnail key={movie.id} movie={movie} />
           ))}
         </div>
