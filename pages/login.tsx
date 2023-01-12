@@ -44,6 +44,7 @@ function Login() {
           </label>
           <label className="inline-block w-full" htmlFor="">
             <input type="password" placeholder='Password' className='input' {...register('password', {required: true})}/>
+            {errors.password && <p className='p-1 text-[13px] font-light text-orange-500'>Please enter a valid password</p>}
           </label>
         </div>
 
