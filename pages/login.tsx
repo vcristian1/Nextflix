@@ -11,7 +11,13 @@ interface Inputs {
 function Login() {
   const [login, setLogin] = useState(false)
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = async ({email, password}) => {
+    if (login) {
+      // await signIn(email, password )
+    } else {
+      // await signUp(email, password)
+    }
+  }
 
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
@@ -48,11 +54,11 @@ function Login() {
           </label>
         </div>
 
-        <button className='w-full rounded bg-[#e50914] py-3 font-semibold'>Sign In</button>
+        <button className='w-full rounded bg-[#e50914] py-3 font-semibold' onClick={() => setLogin(true)}>Sign In</button>
 
         <div className='text-[gray]'>
           New to Netflix?{' '}
-          <button type="submit"className='text-white hover:underline'>Sign up now</button>
+          <button type="submit"className='text-white hover:underline' onClick={() => setLogin(false)}>Sign up now</button>
         </div>
       </form>
     </div>
