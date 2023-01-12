@@ -15,7 +15,25 @@ function Login() {
         objectFit="cover"
         alt="moviecover"
       />
-      <div>Login</div>
+
+      <img
+        src="https://rb.gy/ulxxee"
+        className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
+        width={150}
+        height={150}
+      />
+      
+      <form action="" className='relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14'>
+        <h1>Sign In</h1>
+        <div className='space-y-4'>
+          <label htmlFor="">
+            <input type="email" placeholder='Email' className='input' />
+          </label>
+          <label htmlFor="">
+            <input type="password" placeholder='Password' className='input'/>
+          </label>
+        </div>
+      </form>
     </div>
     
   )
