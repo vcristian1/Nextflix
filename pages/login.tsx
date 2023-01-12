@@ -12,7 +12,6 @@ function Login() {
   const [login, setLogin] = useState(false)
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
-  
 
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
@@ -41,6 +40,7 @@ function Login() {
         <div className='space-y-4'>
           <label className="inline-block w-full" htmlFor="">
             <input type="email" placeholder='Email' className='input' {...register('email', {required: true})} />
+            {errors.email && <p className='p-1 text-[13px] font-light text-orange-500'>Please enter a valid email</p>}
           </label>
           <label className="inline-block w-full" htmlFor="">
             <input type="password" placeholder='Password' className='input' {...register('password', {required: true})}/>
