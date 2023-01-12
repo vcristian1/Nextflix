@@ -41,7 +41,7 @@
     <br />
     <br />
     <br />
-    <a href="https://nextflix-react-g3pz6b9s9-vcristian1.vercel.app/">View Demo</a>
+    <a href="https://nextflix-react-e9j8981ij-vcristian1.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/vcristian1/Nextflix-React/issues">Report Bug</a>
     ·
