@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { Movie } from "../typings"
 import { Element,Genre } from "../typings"
 import ReactPlayer from "react-player"
+import { FaPlay } from "react-icons/fa"
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState)
@@ -47,7 +48,7 @@ function Modal() {
   }
 
   return (
-    <MuiModal open={showModal} onClose={handleClose}>
+    <MuiModal open={showModal} onClose={handleClose} className="fixex !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl">
         <>
             <button onClick={handleClose}
             className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]">
@@ -65,6 +66,14 @@ function Modal() {
                 playing
                 muted={muted}
                 />
+
+                <div className="absolute">
+                    <div>
+                        <button className="flex items-center gap-x-2 rounded">
+                        <FaPlay className="h-7 w-7 text-black"/>Play
+                        </button>
+                    </div>
+                </div>
             </div>
         </>
     </MuiModal>
