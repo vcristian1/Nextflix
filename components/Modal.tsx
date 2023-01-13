@@ -1,5 +1,5 @@
 import MuiModal from "@mui/material/Modal"
-import { modalState } from "../atoms/modalAtom"
+import { modalState, movieState } from "../atoms/modalAtom"
 import { useRecoilState } from "recoil"
 import { XIcon } from "@heroicons/react/solid"
 import { useEffect, useState } from "react"
@@ -7,11 +7,10 @@ import { Movie } from "../typings"
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState)
-  const [movie, setMovie] = useState<Movie | null>(null)
+  const [movie, setMovie] = useRecoilState(movieState)
   const [data, setData] = useState()
 
   useEffect(() => {
-    if (!movie) return
 
     async function fetchMovie() {
         const data = await fetch(`https://api.themoviedb.org/3/${
@@ -20,7 +19,9 @@ function Modal() {
             process.env.NEXT_PUBLIC_API_KEY
           }&language=en-US&append_to_response=videos`
           ).then((response) => response.json())
+          .catch((err) => console.log(err.message))
           setData(data)
+          
     }
     fetchMovie()
   },[movie])
