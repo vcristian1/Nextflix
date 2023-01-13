@@ -8,6 +8,7 @@ import useAuth from '../hooks/useAuth'
 import { useRecoilValue } from 'recoil'
 import { modalState } from '../atoms/modalAtom'
 import Modal from '../components/Modal'
+import Plans from '../components/Plans'
 
 interface Props {
   netflixOriginals: Movie[]
@@ -40,7 +41,7 @@ const Home = ({
   
   if (loading || subscription === null) return null
   // if there is no subcription value for the user return this div 
-  if (!subscription) return <div>Plans</div>
+  if (!subscription) return <Plans/>
 
   return (
     // If show modal is true, overflow is hidden to prevent scrolling when the modal is open
