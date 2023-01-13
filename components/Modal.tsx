@@ -1,7 +1,7 @@
 import MuiModal from "@mui/material/Modal"
 import { modalState, movieState } from "../atoms/modalAtom"
 import { useRecoilState } from "recoil"
-import { PlusIcon, XIcon } from "@heroicons/react/solid"
+import { PlusIcon, ThumbUpIcon, XIcon } from "@heroicons/react/solid"
 import { useEffect, useState } from "react"
 import { Movie } from "../typings"
 import { Element,Genre } from "../typings"
@@ -75,7 +75,11 @@ function Modal() {
                         </button>
 
                         <button className="modalButton">
-                            <PlusIcon />
+                            <PlusIcon className="h-7 w-7"/>
+                        </button>
+
+                        <button className="modalButton">
+                            <ThumbUpIcon className="h-7 w-7"/>
                         </button>
                     </div>
                 </div>
