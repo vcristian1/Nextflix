@@ -1,7 +1,7 @@
 import MuiModal from "@mui/material/Modal"
 import { modalState, movieState } from "../atoms/modalAtom"
 import { useRecoilState } from "recoil"
-import { XIcon } from "@heroicons/react/solid"
+import { PlusIcon, XIcon } from "@heroicons/react/solid"
 import { useEffect, useState } from "react"
 import { Movie } from "../typings"
 import { Element,Genre } from "../typings"
@@ -48,7 +48,8 @@ function Modal() {
   }
 
   return (
-    <MuiModal open={showModal} onClose={handleClose} className="fixex !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl">
+    <MuiModal open={showModal} onClose={handleClose} className="fixex !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl 
+    overflow-hidden overflow-y-scroll rounded-md scrollbar-hide">
         <>
             <button onClick={handleClose}
             className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]">
@@ -67,10 +68,14 @@ function Modal() {
                 muted={muted}
                 />
 
-                <div className="absolute">
-                    <div>
-                        <button className="flex items-center gap-x-2 rounded">
+                <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
+                    <div className="flex space-x-2">
+                        <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]">
                         <FaPlay className="h-7 w-7 text-black"/>Play
+                        </button>
+
+                        <button className="modalButton">
+                            <PlusIcon />
                         </button>
                     </div>
                 </div>
