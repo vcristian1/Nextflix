@@ -4,12 +4,16 @@ import { useRecoilState } from "recoil"
 import { XIcon } from "@heroicons/react/solid"
 import { useEffect, useState } from "react"
 import { Movie } from "../typings"
-import { Element } from "../typings"
+import { Element,Genre } from "../typings"
+import ReactPlayer from "react-player"
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState)
   const [movie, setMovie] = useRecoilState(movieState)
   const [trailer, setTrailer] = useState("")
+  const [genres, setGenres] = useState<Genre[]>()
+//Switch to true if you happen to demo and post the video in case of copyright infringement
+  const [muted, setMuted] = useState(false)
 
   useEffect(() => {
     if (!movie) return
@@ -26,10 +30,17 @@ function Modal() {
           if (data?.videos) {
             const index = data.videos.results.findIndex((element: Element) => element.type 
             === "Trailer")
+            // key in the movie data allows us to use the youtube player
+            setTrailer(data.videos?.results[index]?.key)
+          }
+          if (data?.genres) {
+            setGenres(data.genres)
           }
     }
     fetchMovie()
   },[movie])
+
+  console.log(trailer)
 
   const handleClose = () => {
     setShowModal(false)
@@ -43,8 +54,17 @@ function Modal() {
                 <XIcon className="h-6 w-6" />
             </button>
             {/* fetches real time videos */}
+            {/* Whenever you click on the modal, you have a react player which plays automatically with the playing prop with a url  */}
+            {/* and the trailer variable which stores the trailer from the data being fetched from fetchMovie */}
             <div>
-
+                <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${trailer}`}
+                width="100%"
+                height="100%"
+                style={{ position: 'absolute', top: '0', left: '0' }}
+                playing
+                muted={muted}
+                />
             </div>
         </>
     </MuiModal>
