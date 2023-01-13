@@ -102,7 +102,13 @@ function Modal() {
                         </div>
                     </div>
                     <div>
-                        <p>{movie?.overview}</p>
+                        <p className="w-5/6">{movie?.overview}</p>
+                        <div>
+                            <div>
+                                <span>Genres: </span>
+                                {genres?.map((genre) => genre.name).join(', ')}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
