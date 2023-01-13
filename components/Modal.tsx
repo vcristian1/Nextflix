@@ -4,13 +4,15 @@ import { useRecoilState } from "recoil"
 import { XIcon } from "@heroicons/react/solid"
 import { useEffect, useState } from "react"
 import { Movie } from "../typings"
+import { Element } from "../typings"
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState)
   const [movie, setMovie] = useRecoilState(movieState)
-  const [data, setData] = useState()
+  const [trailer, setTrailer] = useState("")
 
   useEffect(() => {
+    if (!movie) return
 
     async function fetchMovie() {
         const data = await fetch(`https://api.themoviedb.org/3/${
@@ -20,14 +22,14 @@ function Modal() {
           }&language=en-US&append_to_response=videos`
           ).then((response) => response.json())
           .catch((err) => console.log(err.message))
-          setData(data)
-          
+        
+          if (data?.videos) {
+            const index = data.videos.results.findIndex((element: Element) => element.type 
+            === "Trailer")
+          }
     }
     fetchMovie()
   },[movie])
-
-  console.log(data)
-
 
   const handleClose = () => {
     setShowModal(false)
