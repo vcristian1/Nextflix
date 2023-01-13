@@ -91,6 +91,15 @@ function Modal() {
                     </button>
                 </div>
             </div>
+            {/* Description, Ratings, and Date section of the modal*/}
+            <div>
+                <div>
+                    <div>
+                        <p>{movie!.vote_average * 10}% Match</p>
+                        <p>{movie?.release_date || movie?.first_air_date}</p>
+                    </div>
+                </div>
+            </div>
         </>
     </MuiModal>
   )
