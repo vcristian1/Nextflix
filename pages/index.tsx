@@ -32,10 +32,15 @@ const Home = ({
 }: Props) => {
 
   const { loading } = useAuth()
-  const showModal = useRecoilValue(modalState)
   // The below does the same as the above.
   // const [showModal, setShowModal] = useState(false)
-  if (loading) return null
+  const showModal = useRecoilValue(modalState)
+  //Temporary hardcode solution which determines every user does not have a subscription
+  const subscription = false 
+  
+  if (loading || subscription === null) return null
+  // if there is no subcription value for the user return this div 
+  if (!subscription) return <div>Plans</div>
 
   return (
     // If show modal is true, overflow is hidden to prevent scrolling when the modal is open
