@@ -1,7 +1,7 @@
 import MuiModal from "@mui/material/Modal"
 import { modalState, movieState } from "../atoms/modalAtom"
 import { useRecoilState } from "recoil"
-import { PlusIcon, ThumbUpIcon, XIcon } from "@heroicons/react/solid"
+import { PlusIcon, ThumbUpIcon, VolumeOffIcon, VolumeUpIcon, XIcon } from "@heroicons/react/solid"
 import { useEffect, useState } from "react"
 import { Movie } from "../typings"
 import { Element,Genre } from "../typings"
@@ -82,6 +82,13 @@ function Modal() {
                             <ThumbUpIcon className="h-7 w-7"/>
                         </button>
                     </div>
+                    <button onClick={() => setMuted(!muted)}>
+                        {muted ? (
+                            <VolumeOffIcon className="h-6 w-6"/> 
+                            ): ( 
+                            <VolumeUpIcon className="h-6 w-6"/>
+                            )}
+                    </button>
                 </div>
             </div>
         </>
