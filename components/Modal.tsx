@@ -94,9 +94,15 @@ function Modal() {
             {/* Description, Ratings, and Date section of the modal*/}
             <div>
                 <div>
+                    <div className="flex items-center space-x-2 text-sm">
+                        <p className="font-semibold text-green-400">{movie!.vote_average * 10}% Match</p>
+                        <p className="font-light">{movie?.release_date || movie?.first_air_date}</p>
+                        <div className="flex h-4 items-center justify-center rounded border border-white/40 px-1.5 text-xs">
+                            HD
+                        </div>
+                    </div>
                     <div>
-                        <p>{movie!.vote_average * 10}% Match</p>
-                        <p>{movie?.release_date || movie?.first_air_date}</p>
+                        <p>{movie?.overview}</p>
                     </div>
                 </div>
             </div>
