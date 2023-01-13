@@ -92,8 +92,8 @@ function Modal() {
                 </div>
             </div>
             {/* Description, Ratings, and Date section of the modal*/}
-            <div>
-                <div>
+            <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
+                <div className="space-y-6 text-lg">
                     <div className="flex items-center space-x-2 text-sm">
                         <p className="font-semibold text-green-400">{movie!.vote_average * 10}% Match</p>
                         <p className="font-light">{movie?.release_date || movie?.first_air_date}</p>
@@ -103,9 +103,9 @@ function Modal() {
                     </div>
                     <div>
                         <p className="w-5/6">{movie?.overview}</p>
-                        <div>
-                            <div>
-                                <span>Genres: </span>
+                        <div className="flex flex-column space-y-3 text-sm">
+                            <div >
+                                <span className="text-[gray]">Genres: </span>
                                 {genres?.map((genre) => genre.name).join(', ')}
                             </div>
                         </div>
