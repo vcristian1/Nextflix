@@ -60,7 +60,7 @@ function Modal() {
             {/* and the trailer variable which stores the trailer from the data being fetched from fetchMovie */}
             <div className="relative pt-[56.25%]">
                 <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${trailer}`}
+                url={`https://www.youtube.com/watch?v=${trailer}` || `https://www.youtube.com/watch?v=2U76x2fD_tE` }
                 width="100%"
                 height="100%"
                 style={{ position: 'absolute', top: '0', left: '0' }}
@@ -103,16 +103,20 @@ function Modal() {
                     </div>
                     <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
                         <p className="w-5/6">{movie?.overview}</p>
-                        <div className="flex flex-column space-y-3 text-sm">
-                            <div >
+                        <div className="flex flex-col space-y-3 text-sm">
+                            <div>
                                 <span className="text-[gray]">Genres: </span>
                                 {genres?.map((genre) => genre.name).join(', ')}
                             </div>
+
                             <div>
-                                <span>{movie?.original_language}</span>
+                                <span className="text-[gray]">Original language: </span>
+                                {movie?.original_language}
                             </div>
+
                             <div>
-                                <span>{movie?.vote_count}</span>
+                                <span className="text-[gray]">Total Votes: </span>
+                                {movie?.vote_count}
                             </div>
                         </div>
                     </div>
