@@ -108,6 +108,12 @@ function Modal() {
                                 <span className="text-[gray]">Genres: </span>
                                 {genres?.map((genre) => genre.name).join(', ')}
                             </div>
+                            <div>
+                                <span>{movie?.original_language}</span>
+                            </div>
+                            <div>
+                                <span>{movie?.vote_count}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
