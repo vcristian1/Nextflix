@@ -56,7 +56,7 @@ function Modal() {
             {/* fetches real time videos */}
             {/* Whenever you click on the modal, you have a react player which plays automatically with the playing prop with a url  */}
             {/* and the trailer variable which stores the trailer from the data being fetched from fetchMovie */}
-            <div>
+            <div className="relative pt-[56.25%]">
                 <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${trailer}`}
                 width="100%"
