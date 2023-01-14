@@ -20,3 +20,6 @@ const loadCheckout = async (priceId: string) => {
         //The snapshot url is the link to the checkout sesssion, a stripe payment portal, which is given to us by Stripe. 
     }).then((snapshot) => window.location.assign(snapshot.url)).catch((error) => console.log(error.message))
 }
+
+export { loadCheckout }
+export default payments
