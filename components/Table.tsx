@@ -12,7 +12,7 @@ function Table({ products, selectedPlan }) {
     <table>
         <tbody className="divide-y divide-[gray]">
             <tr className="tableRow">
-                <td className="tableDataTitle">Monthly Price</td>
+                <td className="tableDataTitle">Monthly price</td>
                 {products.map((product) => (
                     <td className={`tableDataFeature ${selectedPlan?.id === product.id ? "text-[#e50914]" : "text-[gray]"}`} key={product.id}>
                         ${product.prices[0].unit_amount! / 100}
@@ -20,7 +20,7 @@ function Table({ products, selectedPlan }) {
                 ))}
             </tr>
             <tr className="tableRow">
-                <td className="tableDataTitle">Video Quality</td>
+                <td className="tableDataTitle">Video quality</td>
                 {products.map((product) => (
                     <td className={`tableDataFeature ${selectedPlan?.id === product.id ? "text-[#e50914]" : "text-[gray]"}`} key={product.id}>
                         {product.metadata.videoQuality}
@@ -30,18 +30,55 @@ function Table({ products, selectedPlan }) {
             <tr className="tableRow">
                 <td className="tableDataTitle">Resolution</td>
                 {products.map((product) => (
-                    <td className={`tableDataFeature ${selectedPlan?.id === product.id ? "text-[#e50914]" : "text-[gray]"}`} key={product.id}>
-                        {product.metadata.resolution}
+                    <td
+                    className={`tableDataFeature ${
+                        selectedPlan?.id === product.id
+                        ? 'text-[#E50914]'
+                        : 'text-[gray]'
+                    }`}
+                    key={product.id}
+                    >
+                    {product.metadata.resolution}
                     </td>
                 ))}
             </tr>
             <tr className="tableRow">
-                <td className="tableDataTitle">Watch on your TV, computer, mobile phone and tablet</td>
+                <td className="tableDataTitle">
+                    Watch on your TV, computer, mobile phone and tablet
+                </td>
                 {products.map((product) => (
-                    <td className={`tableDataFeature ${selectedPlan?.id === product.id ? "text-[#e50914]" : "text-[gray]"}`} key={product.id}>
-                        <CheckIcon className='h-7 w-7'>{product.metadata.portability}</CheckIcon>
-                    </td>
-                ))}
+                    <td
+                    className={`tableDataFeature ${
+                        selectedPlan?.id === product.id
+                        ? 'text-[#E50914]'
+                        : 'text-[gray]'
+                    }`}
+                    key={product.id}
+                    >
+                    {product.metadata.portability === 'true' && (
+                        <CheckIcon className="inline-block h-8 w-8" />
+                    )}
+                </td>
+             ))}
+            </tr>
+            <tr className="tableRow">
+                <td className="tableDataTitle">
+                    Downloads
+                </td>
+                {products.map((product) => (
+                    <td
+                    className={`tableDataFeature ${
+                        selectedPlan?.id === product.id
+                        ? 'text-[#E50914]'
+                        : 'text-[gray]'
+                    }`}
+                    key={product.id}
+                    >
+                    {product.metadata.downloads === 'true' && (
+                        <CheckIcon className="inline-block h-8 w-8" />
+                    )}
+                </td>
+             ))}
             </tr>
         </tbody>
     </table>
