@@ -73,7 +73,7 @@ function Plans({ products }) {
                     </div>
                 ))}
             </div>
-            <Table products={products}/>
+            <Table products={products} selectedPlan={selectedPlan}/>
         </div>
         <button>Subscribe</button>
       </main>
