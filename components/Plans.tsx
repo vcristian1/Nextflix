@@ -54,15 +54,15 @@ const { logout } = useAuth()
 
         <div  className='mt-4 flex flex-col space-y-4'>
             <div className='flex w-full items-center justify-end self-end md:w-3/5'>
+                {/* <div className='planBox'>
+                    Basic
+                </div>
                 <div className='planBox'>
                     Standard
                 </div>
                 <div className='planBox'>
                     Premium
-                </div>
-                <div className='planBox'>
-                    Exclusive
-                </div>
+                </div> */}
             </div>
 
             {/* Table here */}
