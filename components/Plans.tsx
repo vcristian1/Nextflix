@@ -53,7 +53,7 @@ const { logout } = useAuth()
         </ul>
 
         <div>
-            <div>
+            <div className='flex'>
                 <div className='planBox'>
                     Standard
                 </div>
@@ -61,7 +61,7 @@ const { logout } = useAuth()
                     Premium
                 </div>
                 <div className='planBox'>
-                    Luxury
+                    Exclusive
                 </div>
             </div>
         </div>
