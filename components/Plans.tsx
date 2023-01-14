@@ -51,8 +51,22 @@ const { logout } = useAuth()
             your plan anytime.
           </li>
         </ul>
+
+        <div>
+            <div>
+                <div className='planBox'>
+                    Standard
+                </div>
+                <div className='planBox'>
+                    Premium
+                </div>
+                <div className='planBox'>
+                    Luxury
+                </div>
+            </div>
+        </div>
+
       </main>
-        
     </div>
   )
 }

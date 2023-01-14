@@ -40,7 +40,7 @@ const Home = ({
   const subscription = false 
   
   if (loading || subscription === null) return null
-  // if there is no subcription value for the user return this div 
+  // if there is no subcription value for the user return the Plans component. 
   if (!subscription) return <Plans/>
 
   return (
