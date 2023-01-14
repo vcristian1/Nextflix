@@ -44,7 +44,7 @@ const Home = ({
   
   if (loading || subscription === null) return null
   // if there is no subcription value for the user return the Plans component. 
-  if (!subscription) return <Plans/>
+  if (!subscription) return <Plans products={products}/>
 
   return (
     // If show modal is true, overflow is hidden to prevent scrolling when the modal is open
