@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Link from 'next/link';
 import { useState } from 'react';
 import useAuth from '../hooks/useAuth';
+import { loadCheckout } from '../lib/stripe';
+import Loader from './Loader';
 import Table from './Table';
  
 
@@ -12,9 +14,18 @@ interface Props {
 }
 
 function Plans({ products }) {
-  const { logout } = useAuth()
-  //Piece of state for selectedPlan, and by default we want premium to be selected when the user loads the page 
+  const { logout, user } = useAuth()
+  //State for selectedPlan, and by default we want premium to be selected when the user loads the page 
   const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[2])
+  //State for isBillingLoading
+  const [isBillingLoading, setBillingLoading] = useState(false)
+
+  const subscribeToPlan = () => {
+    if (!user) return
+
+    loadCheckout(selectedPlan?.prices[0].id!)
+    setBillingLoading(true)
+  }
 
   return (
     <div className='flex'>
@@ -75,7 +86,21 @@ function Plans({ products }) {
             </div>
             <Table products={products} selectedPlan={selectedPlan}/>
         </div>
-        <button>Subscribe</button>
+        {/* Button onClick will act as an async function */}
+        <button
+        //  Disabled attribute when present specifies that the button is unclickable if there is no selected plan or if isBillingLoading is true
+            disabled={!selectedPlan || isBillingLoading}
+            className={`mx-auto w-11/12 rounded bg-[#E50914] py-4 text-xl shadow hover:bg-[#f6121d] md:w-[420px] ${
+              isBillingLoading && 'opacity-60'
+            }`}
+            onClick={subscribeToPlan}
+          >
+            {isBillingLoading ? (
+              <Loader color="dark:fill-gray-300" />
+            ) : (
+              'Subscribe'
+            )}
+          </button>
       </main>
     </div>
   )

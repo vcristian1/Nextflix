@@ -4,7 +4,7 @@ import { Product } from "@stripe/firestore-stripe-payments"
 
 interface Props {
     products: Product[]
-    selectedPlan: Product
+    selectedPlan: Product | null
 }
 
 function Table({ products, selectedPlan }) {
