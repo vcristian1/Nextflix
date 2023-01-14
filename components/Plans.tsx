@@ -65,8 +65,10 @@ function Plans({ products }) {
         <div  className='mt-4 flex flex-col space-y-4'>
             <div className='flex w-full items-center justify-end self-end md:w-3/5'>
                 {products.map((product) => (
-                  //Styling for if there is a seletecPlan, make that selectedPlan's opacity 100% and the other 60%
-                    <div className={`planBox ${selectedPlan?.id === product.id ? "opacity-100" : "opacity-60"}`} key={product.id}>
+                  // if selectedPlan.id = product.id the product name will have a 100 opacity while all other product names will have 60% opacity
+                    <div className={`planBox ${selectedPlan?.id === product.id ? "opacity-100" : "opacity-60"}`} key={product.id}
+                    //change our piece of state to  different piece of state, so the user can click between product names and each product selected will have a 100 opacity
+                    onClick={() => setSelectedPlan(product)}>
                         {product.name}
                     </div>
                 ))}
