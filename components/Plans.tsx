@@ -67,7 +67,7 @@ function Plans({ products }) {
                     </div>
                 ))}
             </div>
-            <Table />
+            <Table products={products}/>
         </div>
         <button>Subscribe</button>
       </main>

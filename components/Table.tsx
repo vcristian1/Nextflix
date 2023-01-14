@@ -1,7 +1,23 @@
+import { Product } from "@stripe/firestore-stripe-payments"
 
-function Table() {
+interface Props {
+    products: Product[]
+}
+
+function Table({ products }) {
   return (
-    <div>Table</div>
+    <table>
+        <tbody>
+            <tr>
+                <td>Monthly price</td>
+                {products.map((product) => (
+                    <td className="tableDataFeature" key={product.id}>
+                        ${product.prices[0].unit_amount! / 100}
+                    </td>
+                ))}
+            </tr>
+        </tbody>
+    </table>
   )
 }
 
