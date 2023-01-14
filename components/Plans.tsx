@@ -2,6 +2,7 @@ import { CheckIcon } from '@heroicons/react/solid';
 import { Product } from '@stripe/firestore-stripe-payments';
 import Head from 'next/head'
 import Link from 'next/link';
+import { useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import Table from './Table';
  
@@ -12,6 +13,8 @@ interface Props {
 
 function Plans({ products }) {
   const { logout } = useAuth()
+  //Piece of state for selectedPlan, and by default we want premium to be selected when the user loads the page 
+  const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[2])
 
   return (
     <div className='flex'>
@@ -62,7 +65,8 @@ function Plans({ products }) {
         <div  className='mt-4 flex flex-col space-y-4'>
             <div className='flex w-full items-center justify-end self-end md:w-3/5'>
                 {products.map((product) => (
-                    <div className="planBox" key={product.id}>
+                  //Styling for if there is a seletecPlan, make that selectedPlan's opacity 100% and the other 60%
+                    <div className={`planBox ${selectedPlan?.id === product.id ? "opacity-100" : "opacity-60"}`} key={product.id}>
                         {product.name}
                     </div>
                 ))}
