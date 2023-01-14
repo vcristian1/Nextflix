@@ -23,7 +23,6 @@ interface Props {
   documentaries: Movie[]
   products: Product
 }
-
 const Home = ({ 
   netflixOriginals,
   actionMovies,
@@ -35,7 +34,7 @@ const Home = ({
   trendingNow,
   products
 }: Props) => {
-
+  console.log(products);
   const { loading } = useAuth()
   // The below does the same as the above.
   // const [showModal, setShowModal] = useState(false)
