@@ -52,8 +52,8 @@ const { logout } = useAuth()
           </li>
         </ul>
 
-        <div>
-            <div className='flex'>
+        <div  className='mt-4 flex flex-col space-y-4'>
+            <div className='flex w-full items-center justify-end self-end md:w-3/5'>
                 <div className='planBox'>
                     Standard
                 </div>
@@ -64,8 +64,10 @@ const { logout } = useAuth()
                     Exclusive
                 </div>
             </div>
-        </div>
 
+            {/* Table here */}
+        </div>
+        <button>Subscribe</button>
       </main>
     </div>
   )
