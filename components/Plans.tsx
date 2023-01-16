@@ -7,7 +7,6 @@ import useAuth from '../hooks/useAuth';
 import { loadCheckout } from '../lib/stripe';
 import Loader from './Loader';
 import Table from './Table';
- 
 
 interface Props {
     products: Product[];
@@ -19,6 +18,7 @@ function Plans({ products }) {
   const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[2])
   //State for isBillingLoading
   const [isBillingLoading, setBillingLoading] = useState(false)
+  
 
   const subscribeToPlan = () => {
     if (!user) return

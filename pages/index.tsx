@@ -40,7 +40,7 @@ const Home = ({
   // const [showModal, setShowModal] = useState(false)
   const showModal = useRecoilValue(modalState)
   //Temporary hardcode solution which determines every user does not have a subscription
-  const subscription = false
+  let subscription = false
   
   if (loading || subscription === null) return null
   // if there is no subcription value for the user return the Plans component. 
