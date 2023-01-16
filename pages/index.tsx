@@ -1,16 +1,18 @@
+import { getProducts, Product } from '@stripe/firestore-stripe-payments'
 import Head from 'next/head'
-import Header from '../components/Header'
-import Banner from '../components/Banner'
-import requests from '../utils/requests'
-import Row from '../components/Row'
-import { Movie } from '../typings'
-import useAuth from '../hooks/useAuth'
 import { useRecoilValue } from 'recoil'
-import { modalState } from '../atoms/modalAtom'
+import { modalState, movieState } from '../atoms/modalAtom'
+import Banner from '../components/Banner'
+import Header from '../components/Header'
 import Modal from '../components/Modal'
 import Plans from '../components/Plans'
-import { getProduct, getProducts, Product } from '@stripe/firestore-stripe-payments'
+import Row from '../components/Row'
+import useAuth from '../hooks/useAuth'
+// import useList from '../hooks/useList'
+// import useSubscription from '../hooks/useSubscription'
 import payments from '../lib/stripe'
+import { Movie } from '../typings'
+import requests from '../utils/requests'
 
 interface Props {
   netflixOriginals: Movie[]
@@ -21,9 +23,10 @@ interface Props {
   horrorMovies: Movie[]
   romanceMovies: Movie[]
   documentaries: Movie[]
-  products: Product
+  products: Product[]
 }
-const Home = ({ 
+
+const Home = ({
   netflixOriginals,
   actionMovies,
   comedyMovies,
@@ -32,28 +35,28 @@ const Home = ({
   romanceMovies,
   topRated,
   trendingNow,
-  products
+  products,
 }: Props) => {
-  console.log(products);
-  const { loading } = useAuth()
-  // The below does the same as the above.
-  // const [showModal, setShowModal] = useState(false)
+  const { user, loading } = useAuth()
+  // const subscription = useSubscription(user)
   const showModal = useRecoilValue(modalState)
-  //Temporary hardcode solution which determines every user does not have a subscription
-  let subscription = false
-  
+  const movie = useRecoilValue(movieState)
+  // const list = useList(user?.uid)
+  const subscription = false
+
   if (loading || subscription === null) return null
-  // if there is no subcription value for the user return the Plans component. 
-  if (!subscription) return <Plans products={products}/>
+
+  if (!subscription) return <Plans products={products} />
 
   return (
-    // If show modal is true, overflow is hidden to prevent scrolling when the modal is open
     <div
-      className={`relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh] ${showModal &&  '!h-screen overflow-hidden'}`}
+      className={`relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh] ${
+        showModal && '!h-screen overflow-hidden'
+      }`}
     >
       <Head>
         <title>
-          Home - Netflix
+          {movie?.title || movie?.original_name || 'Home'} - Netflix
         </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -68,6 +71,7 @@ const Home = ({
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />
           {/* My List */}
+          {/* {list.length > 0 && <Row title="My List" movies={list} />} */}
 
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
@@ -75,21 +79,20 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
-      {/* Modal Here */}
-      {showModal && <Modal/>}
+      {showModal && <Modal />}
     </div>
   )
 }
 
 export default Home
 
-// Function for server side rendering
 export const getServerSideProps = async () => {
   const products = await getProducts(payments, {
     includePrices: true,
     activeOnly: true,
-  }).then((res) => res)
-  .catch((error) => console.log(error.message));
+  })
+    .then((res) => res)
+    .catch((error) => console.log(error.message))
 
   const [
     netflixOriginals,
@@ -100,7 +103,6 @@ export const getServerSideProps = async () => {
     horrorMovies,
     romanceMovies,
     documentaries,
-    // We use promise.all to resolve all of these fetch requests together
   ] = await Promise.all([
     fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
     fetch(requests.fetchTrending).then((res) => res.json()),
@@ -114,7 +116,6 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      //Use .results to access the movies
       netflixOriginals: netflixOriginals.results,
       trendingNow: trendingNow.results,
       topRated: topRated.results,
