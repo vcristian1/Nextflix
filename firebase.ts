@@ -3,26 +3,18 @@ import { initializeApp, getApp, getApps } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-// Your web app's Firebase configuration
-// const firebaseConfig = {
-//     apiKey: "AIzaSyBy6-X5Ykws7J-F4p9Zrk-tkgXoM4k2fm0",
-//     authDomain: "nextflix-react.firebaseapp.com",
-//     projectId: "nextflix-react",
-//     storageBucket: "nextflix-react.appspot.com",
-//     messagingSenderId: "723074020428",
-//     appId: "1:723074020428:web:da2efc6f68f60ff235b0e9"
-// };
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDNWAU3B0fzymE_c8n-pIzFvcuoquLarjg",
-  authDomain: "nextflix-53016.firebaseapp.com",
-  projectId: "nextflix-53016",
-  storageBucket: "nextflix-53016.appspot.com",
-  messagingSenderId: "774759801474",
-  appId: "1:774759801474:web:e8ba5a01ae475cb3408a9b"
+  apiKey: "AIzaSyDsvyrt1TjW6Z6Ztcw5c2fTSRAZxmSR8Vo",
+  authDomain: "nextflix-49591.firebaseapp.com",
+  projectId: "nextflix-49591",
+  storageBucket: "nextflix-49591.appspot.com",
+  messagingSenderId: "404073234354",
+  appId: "1:404073234354:web:bd6f8319ff15c2c2fb2eab"
 };
 
 // Initialize Firebase
