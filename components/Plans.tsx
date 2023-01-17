@@ -9,6 +9,7 @@ import { redirect } from 'next/dist/server/api-utils'
 
 
 function Plans() {
+  const [login, setLogin] = useState(false)
   const { logout, user } = useAuth()
   const [isBillingLoading, setBillingLoading] = useState(false)  
 

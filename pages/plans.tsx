@@ -9,6 +9,7 @@ import Loader from '../components/Loader'
 
 
 function Plans() {
+  const [login, setLogin] = useState(false)
   const { logout, user } = useAuth()
   const [isBillingLoading, setBillingLoading] = useState(false)  
 
