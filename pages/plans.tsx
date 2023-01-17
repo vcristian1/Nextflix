@@ -3,9 +3,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import useAuth from '../hooks/useAuth'
-import Table from './Table'
-import Loader from './Loader'
 import { redirect } from 'next/dist/server/api-utils'
+import Table from '../components/Table'
+import Loader from '../components/Loader'
 
 
 function Plans() {

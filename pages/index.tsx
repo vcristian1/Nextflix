@@ -38,7 +38,7 @@ const Home = ({
   const showModal = useRecoilValue(modalState)
   const movie = useRecoilValue(movieState)
   // const list = useList(user?.uid)
-  const subscription = false
+  let subscription = true
 
   if (loading || subscription === null) return null
 
