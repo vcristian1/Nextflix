@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import useAuth from '../hooks/useAuth'
+import movieCover from '../assets/movie-cover.jpeg'
 
 interface Inputs {
   email: string
@@ -36,7 +37,7 @@ function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image
-        src="https://rb.gy/p2hphi"
+        src={movieCover}
         layout="fill"
         className="-z-10 !hidden opacity-60 sm:!inline"
         objectFit="cover"
